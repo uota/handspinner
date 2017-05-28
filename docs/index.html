@@ -12,62 +12,62 @@
 <script type="text/javascript">
 <!--
 $(function(){
-	// ��ʃT�C�Y�̎擾
+	// 画面サイズの取得
 	window_width = $(window).width();
 	window_height = $(window).height();
 
-	// �莝�������̃T�C�Y
+	// 手持ち部分のサイズ
 	disable_range = window_width / 2 * 0.3;
 
-	// �X�s�i�[�̃T�C�Y�̒���
+	// スピナーのサイズの調節
 	$("#spinner img").css("width", window_width * 0.9 + "px");
 	$("#spinner img").css("height", window_width * 0.9 + "px");
 
-	// �^�b�`���o�̊Ԋu���J����
+	// タッチ検出の間隔を開ける
 	interval = false;
 
-	// �^�b�`���Ă��邩�t���O
+	// タッチしているかフラグ
 	touch = false;
 
-	// �����p�x
+	// 初期角度
 	angle = 0;
 
-	// ���x
+	// 速度
 	diff = 0;
 
-	// ��]�A�j���[�V����
+	// 回転アニメーション
 	setInterval(function(){
-		// �A�j���[�V����
+		// アニメーション
 		angle += diff;
 		$("#spinner img").rotate(angle);
 
-		// ���x����
+		// 速度減衰
 		diff *= 0.9995;
 
 		interval=true;
 	},15);
 
-	// �^�b�`�J�n�����Ƃ�
+	// タッチ開始したとき
 	$("#spinner").bind('touchstart', function() {
 		event.preventDefault();	
 		x = event.changedTouches[0].pageX - window_width / 2;
 		y = event.changedTouches[0].pageY - window_height / 2;
 
-		// �莝�������O�Ȃ珉���p�x�Z�o
+		// 手持ち部分外なら初期角度算出
 		if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 			old_angle = Math.atan(x / y) / 3.141592 * 180;
 			touch = true;
 		}
 	});
 
-	// �^�b�`�ړ������Ƃ�
+	// タッチ移動したとき
 	$("#spinner").bind('touchmove', function() {
 		if(interval){
 			event.preventDefault();
 			x = event.changedTouches[0].pageX - window_width / 2;
 			y = event.changedTouches[0].pageY - window_height / 2;
 
-			// �莝�������O�Ȃ�p���x�Z�o
+			// 手持ち部分外なら角速度算出
 			if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 				new_angle = Math.atan(x / y) / 3.141592 * 180;
 				diff = old_angle - new_angle;
@@ -81,9 +81,9 @@ $(function(){
 		}
 	});
 
-	// �^�b�`�I�������Ƃ�
+	// タッチ終了したとき
 	$("#spinner").bind('touchend', function() {
-		// �莝�������O�Ȃ�^�b�`�I���t���O
+		// 手持ち部分外ならタッチ終了フラグ
 		if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 			touch = false;
 		}
@@ -93,7 +93,7 @@ $(function(){
 // -->
 </script>
 <style>
-/* ��ʒ��S�ɕ\�� */
+/* 画面中心に表示 */
 html {
 	padding: 0;
 	margin: 0 auto;
@@ -115,7 +115,7 @@ body {
 }
  
 </style>
-<noscript>java script���L���ɂȂ��Ă��Ȃ����ߕ\���ł��܂���B</noscript>
+<noscript>java scriptが有効になっていないため表示できません。</noscript>
 <div class="c1" id="spinner">
 <img src="img/handspinner.png">
 </div>
