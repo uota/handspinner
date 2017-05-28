@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
+<meta charset="Shift_JIS" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>hand spinner</title>
 </head>
@@ -12,62 +12,62 @@
 <script type="text/javascript">
 <!--
 $(function(){
-	// ‰æ–ÊƒTƒCƒY‚Ìæ“¾
+	// ç”»é¢ã‚µã‚¤ã‚ºã®å–å¾—
 	window_width = $(window).width();
 	window_height = $(window).height();
 
-	// è‚¿•”•ª‚ÌƒTƒCƒY
+	// æ‰‹æŒã¡éƒ¨åˆ†ã®ã‚µã‚¤ã‚º
 	disable_range = window_width / 2 * 0.3;
 
-	// ƒXƒsƒi[‚ÌƒTƒCƒY‚Ì’²ß
+	// ã‚¹ãƒ”ãƒŠãƒ¼ã®ã‚µã‚¤ã‚ºã®èª¿ç¯€
 	$("#spinner img").css("width", window_width * 0.9 + "px");
 	$("#spinner img").css("height", window_width * 0.9 + "px");
 
-	// ƒ^ƒbƒ`ŒŸo‚ÌŠÔŠu‚ğŠJ‚¯‚é
+	// ã‚¿ãƒƒãƒæ¤œå‡ºã®é–“éš”ã‚’é–‹ã‘ã‚‹
 	interval = false;
 
-	// ƒ^ƒbƒ`‚µ‚Ä‚¢‚é‚©ƒtƒ‰ƒO
+	// ã‚¿ãƒƒãƒã—ã¦ã„ã‚‹ã‹ãƒ•ãƒ©ã‚°
 	touch = false;
 
-	// ‰ŠúŠp“x
+	// åˆæœŸè§’åº¦
 	angle = 0;
 
-	// ‘¬“x
+	// é€Ÿåº¦
 	diff = 0;
 
-	// ‰ñ“]ƒAƒjƒ[ƒVƒ‡ƒ“
+	// å›è»¢ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 	setInterval(function(){
-		// ƒAƒjƒ[ƒVƒ‡ƒ“
+		// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 		angle += diff;
 		$("#spinner img").rotate(angle);
 
-		// ‘¬“xŒ¸Š
+		// é€Ÿåº¦æ¸›è¡°
 		diff *= 0.9995;
 
 		interval=true;
 	},15);
 
-	// ƒ^ƒbƒ`ŠJn‚µ‚½‚Æ‚«
+	// ã‚¿ãƒƒãƒé–‹å§‹ã—ãŸã¨ã
 	$("#spinner").bind('touchstart', function() {
 		event.preventDefault();	
 		x = event.changedTouches[0].pageX - window_width / 2;
 		y = event.changedTouches[0].pageY - window_height / 2;
 
-		// è‚¿•”•ªŠO‚È‚ç‰ŠúŠp“xZo
+		// æ‰‹æŒã¡éƒ¨åˆ†å¤–ãªã‚‰åˆæœŸè§’åº¦ç®—å‡º
 		if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 			old_angle = Math.atan(x / y) / 3.141592 * 180;
 			touch = true;
 		}
 	});
 
-	// ƒ^ƒbƒ`ˆÚ“®‚µ‚½‚Æ‚«
+	// ã‚¿ãƒƒãƒç§»å‹•ã—ãŸã¨ã
 	$("#spinner").bind('touchmove', function() {
 		if(interval){
 			event.preventDefault();
 			x = event.changedTouches[0].pageX - window_width / 2;
 			y = event.changedTouches[0].pageY - window_height / 2;
 
-			// è‚¿•”•ªŠO‚È‚çŠp‘¬“xZo
+			// æ‰‹æŒã¡éƒ¨åˆ†å¤–ãªã‚‰è§’é€Ÿåº¦ç®—å‡º
 			if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 				new_angle = Math.atan(x / y) / 3.141592 * 180;
 				diff = old_angle - new_angle;
@@ -81,9 +81,9 @@ $(function(){
 		}
 	});
 
-	// ƒ^ƒbƒ`I—¹‚µ‚½‚Æ‚«
+	// ã‚¿ãƒƒãƒçµ‚äº†ã—ãŸã¨ã
 	$("#spinner").bind('touchend', function() {
-		// è‚¿•”•ªŠO‚È‚çƒ^ƒbƒ`I—¹ƒtƒ‰ƒO
+		// æ‰‹æŒã¡éƒ¨åˆ†å¤–ãªã‚‰ã‚¿ãƒƒãƒçµ‚äº†ãƒ•ãƒ©ã‚°
 		if(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)) > disable_range){
 			touch = false;
 		}
@@ -93,7 +93,7 @@ $(function(){
 // -->
 </script>
 <style>
-/* ‰æ–Ê’†S‚É•\¦ */
+/* ç”»é¢ä¸­å¿ƒã«è¡¨ç¤º */
 html {
 	padding: 0;
 	margin: 0 auto;
@@ -115,7 +115,7 @@ body {
 }
  
 </style>
-<noscript>java script‚ª—LŒø‚É‚È‚Á‚Ä‚¢‚È‚¢‚½‚ß•\¦‚Å‚«‚Ü‚¹‚ñB</noscript>
+<noscript>java scriptãŒæœ‰åŠ¹ã«ãªã£ã¦ã„ãªã„ãŸã‚è¡¨ç¤ºã§ãã¾ã›ã‚“ã€‚</noscript>
 <div class="c1" id="spinner">
 <img src="img/handspinner.png">
 </div>
